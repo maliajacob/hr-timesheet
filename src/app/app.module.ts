@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
+import { DeparmentsComponent } from './components/deparments/deparments.component';
+import { TimesheetComponent } from './components/timesheet/timesheet.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { AnalyticsTableComponent } from './components/analytics-table/analytics-table.component';
+import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { MaterialModule } from './modules/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DeparmentsComponent,
+    TimesheetComponent,
+    AnalyticsComponent,
+    AnalyticsTableComponent,
+    TopNavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
