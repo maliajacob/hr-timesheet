@@ -17,6 +17,7 @@ export class TimesheetComponent implements OnInit {
   employeeNameFC = new FormControl('', this.nameValidator());
   employees: Employee[] = [];
   employeeId = 0;
+  weekdays: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +38,13 @@ addEmployee(): void {
           departmentId: this.department?.id,
           name: this.employeeNameFC.value,
           payRate: Math.floor(Math.random() * 50) + 50,
+          monday: 0,
+          tuesday: 0,
+          wednesday: 0,
+          thursday: 0,
+          friday: 0,
+          saturday: 0,
+          sunday: 0
       });
 
       this.employeeNameFC.setValue('');
@@ -55,6 +63,15 @@ nameValidator(): ValidatorFn {
       }
       return error;
   };
+}
+
+getTotalHours(employee: Employee): number {
+  return employee.monday + employee.tuesday + employee.wednesday
+      + employee.thursday + employee.friday + employee.saturday + employee.sunday;
+}
+
+deleteEmployee(index: number): void {
+  this.employees.splice(index, 1);
 }
 
 }
