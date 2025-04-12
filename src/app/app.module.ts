@@ -10,6 +10,7 @@ import { AnalyticsTableComponent } from './components/analytics-table/analytics-
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { MaterialModule } from './modules/material.module';
 import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
