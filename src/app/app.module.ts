@@ -10,10 +10,11 @@ import { AnalyticsTableComponent } from './components/analytics-table/analytics-
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { MaterialModule } from './modules/material.module';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { EmployeeService } from './services/employee.service';
 // import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -39,7 +40,12 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFirestoreModule
   ],
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: EmployeeService,
+      useFactory: (afs: AngularFirestore) => new EmployeeService(afs),
+      deps: [AngularFirestore],
+    },
     // provideFirebaseApp(() =>
     //   initializeApp({
     //     projectId: 'hr-timesheet-e7d60',

@@ -1,21 +1,23 @@
-<div>
-    <table>
-        <thead>
-            <th>Name</th>
-            <th *ngFor="let day of weekdays">{{day}}</th>
-            <th>Total Hours</th>
-            <th>Pay Rate</th>
-            <th>Total Pay</th>
-        </thead>
-    
-        <tbody>
-            <tr *ngFor="let employee of employees; let i = index">
-                <td>{{employee.name}}</td>
-                <td *ngFor="let day of weekdays">{{employee[day]}}</td>
-                <td class="total-cell">{{getTotalHours(employee)}}</td>
-                <td>{{employee.payRate}}/hr</td>
-                <td>{{employee.payRate * getTotalHours(employee)}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<mat-card-content>
+    <div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th *ngFor="let day of weekdays">{{day | titlecase}}</th>
+                <th>Total Hours</th>
+                <th>Pay Rate</th>
+                <th>Total Pay</th>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let employee of employees; let i = index">
+                    <td>{{employee.name}}</td>
+                    <td *ngFor="let day of weekdays">{{employee[day]}}</td>
+                    <td class="total-cell">{{getTotalHours(employee) | number:'1.2-2'}}</td>
+                    <td>{{employee.payRate | currency}}/hr</td>
+                    <td>{{employee.payRate * getTotalHours(employee) | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</mat-card-content>
