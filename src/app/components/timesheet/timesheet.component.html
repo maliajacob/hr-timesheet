@@ -43,7 +43,12 @@
               <tr *ngFor="let employee of employees; let i = index">
                 <td>{{ employee.name }}</td>
                 <td *ngFor="let day of weekdays">
-                  {{ employee[day] | number : "1.2-2" }}
+                    <input
+                      type="number"
+                      [min]="0"
+                      [max]="24"
+                      [(ngModel)]="employee[day]"
+                      />
                 </td>
                 <td class="total-cell">
                   {{ getTotalHours(employee) | number : "1.2-2" }}

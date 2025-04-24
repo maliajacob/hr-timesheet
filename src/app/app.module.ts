@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { EmployeeService } from './services/employee.service';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -32,6 +33,7 @@ import { EmployeeService } from './services/employee.service';
     TopNavbarComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,

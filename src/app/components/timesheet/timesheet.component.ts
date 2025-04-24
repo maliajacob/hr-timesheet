@@ -112,7 +112,7 @@ export class TimesheetComponent implements OnInit {
 
     this.employees.splice(index, 1);
   }
-  
+
   // I will possibly use this code
   // submit(): void {
   //   this.employees.forEach(employee => {
